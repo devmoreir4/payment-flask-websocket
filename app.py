@@ -78,8 +78,12 @@ def payment_pix_page(payment_id):
 
 # websockets
 @socketio.on('connect')
-def test_connect():
+def handle_connect():
     print('Client connected to the server')
+
+@socketio.on('disconnect')
+def handle_disconnect():
+    print('Client has disconnected to the server')
 
 if __name__ == '__main__':
     socketio.run(app, debug=True, allow_unsafe_werkzeug=True)
